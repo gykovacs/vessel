@@ -1,0 +1,26 @@
+The vessel segmentation software can be used and redistributed freely.
+
+Please cite the following paper of the authors describing the method.
+
+Gyorgy Kovacs and Andras Hajdu. "A self-calibrating approach for the
+segmentation of retinal vessels by template matching and contour
+reconstruction". In: Medical Image Analysis 29(4) (2016). pp. 24-46.
+DOI: 10.1016/j.media.2015.12.003
+
+Bibtex:
+
+@article{DBLP:journals/mia/KovacsH16,
+  author    = {Gy{\"{o}}rgy Kov{\'{a}}cs and
+               Andr{\'{a}}s Hajdu},
+  title     = {A self-calibrating approach for the segmentation of retinal
+               vessels by template matching and contour reconstruction},
+  journal   = {Medical Image Analysis},
+  volume    = {29},
+  pages     = {24--46},
+  year      = {2016},
+  url       = {http://dx.doi.org/10.1016/j.media.2015.12.003},
+  doi       = {10.1016/j.media.2015.12.003},
+  timestamp = {Tue, 01 Mar 2016 11:42:40 +0100},
+  biburl    = {http://dblp.uni-trier.de/rec/bib/journals/mia/KovacsH16},
+  bibsource = {dblp computer science bibliography, http://dblp.org}
+}
