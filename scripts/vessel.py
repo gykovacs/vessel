@@ -206,5 +206,5 @@ else:
 files_after= os.listdir(".")
 
 for f in files_after:
-    if (not (f in files_before)) and (f != outp) and (f != 'imgscale.txt':
+    if (not (f in files_before)) and (f != outp) and (f != 'imgscale.txt'):
         os.remove(f)

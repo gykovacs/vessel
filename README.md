@@ -34,13 +34,43 @@ Input Image | Output Image | Manual Annotation
 :---------------------:|:-----------------:|:---------------:|
 ![](docs/01_test.png) | ![](docs/01_test_segmented.png) |![](docs/01_manual1.png)
 
-## Prerequisits
+## Minor I/O problem
+
+Something changed in the libtiff package so tiff image reading/writing is incorrect, tiff images should be converted to png/jpg/bmp before segmentation.
+
+## Using through Docker
+
+This is the recommended way to use the software.
+
+### Clone the repo
+
+```bash
+> git clone git@github.com:gykovacs/vessel.git
+```
+
+### Build the Docker image
+
+In the root of the repo, issue
+
+```bash
+> docker build --pull --rm -f "Dockerfile" -t vessel:latest "."
+```
+
+### Use the software by the following command
+
+Supposing that the source images are stored in the directory `<path_of_dir_containing_images>`
+
+```bash
+> docker run -it --env-file env_file --rm -a stdout -v <path_of_dir_containing_images>:/data vessel:latest python3 /usr/src/vessel/scripts/vessel.py drive /data/01_test.png /data/01_segmentation.png
+```
+
+## Building from source
+
+This section can be skipped if the code is being used from Docker.
 
 The software was tested on Ubuntu 20.04 and Windows 10.
 
 The code is written in C++ with a Python wrapper for the ease of command line applications.
-
-**The code neds to be built from source.**
 
 ### Linux (Ubuntu)
 
@@ -104,7 +134,7 @@ Add the path of the `lib64` folder to the `LD_LIBRARY_PATH` and the path of the 
 > make install
 
 The package installs:
-   1. some dlls containing general image processing methods,
+   1. some shared objects/dlls containing general image processing methods,
    2. an application called "vessel"/"vessel.exe", which contains the implementation of the segmentation method,
    3. a Python script which is intended to be used as the main interface of the method,
    4. the model descriptor files trained on the STARE and DRIVE databases.

@@ -1,0 +1,2 @@
+LD_LIBRARY_PATH=/lib:/usr/lib:/usr/src/vessel/lib64
+PATH=/bin:/usr/bin:/usr/src/vessel/bin64:/usr/src/vessel/scripts
