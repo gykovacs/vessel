@@ -1,6 +1,6 @@
-# Vessel segmentation in retinal images
+# Vessel Segmentation in Retinal Images
 
-## INTRODUCTION
+## Introduction
 
 The package contains the implementation of the vessel segmentation method described in the paper:
 
@@ -28,13 +28,13 @@ If you use the method, please consider citing the paper:
   code = {http://github.com/gykovacs/vessel}
 }
 ```
-## ILLUSTRATION
+## Illustration
 
 Input Image | Output Image | Manual Annotation
 :---------------------:|:-----------------:|:---------------:|
 ![](docs/01_test.png) | ![](docs/01_test_segmented.png) |![](docs/01_manual1.png)
 
-## PREREQUISITS
+## Prerequisits
 
 The software was tested on Ubuntu 20.04 and Windows 10.
 
@@ -42,7 +42,7 @@ The code is written in C++ with a Python wrapper for the ease of command line ap
 
 **The code neds to be built from source.**
 
-### LINUX (UBUNTU)
+### Linux (Ubuntu)
 
    1. libpng12 + dev
    2. libz + dev
@@ -51,7 +51,7 @@ The code is written in C++ with a Python wrapper for the ease of command line ap
    5. gsl-bin + dev
    6. python3 + dev
 
-### INSTALLATION OF REQUIREMENTS IN UBUNTU
+### Installation of requirements in Ubuntu
 
 ```bash
 > sudo apt install libpng16-16 libpng-dev libjpeg8 libjpeg8-dev libz3-4 libz3-dev libtiff5 libtiff5-dev gsl-bin libgsl-dev
@@ -75,15 +75,15 @@ Be sure that all the dlls installed with the packages above and with MinGW are p
 in Windows' PATH variable.
 
 
-## BUILDING THE CODE
+## Building the code
 
-### CLONE THE REPO
+### Clone the repo
 
 ```bash
 > git clone git@github.com:gykovacs/vessel.git
 ```
 
-### BUILD
+### Build
 
 In the root directory of the repo:
 
@@ -93,13 +93,13 @@ In the root directory of the repo:
 > make
 ```
 
-## USING THE SOFTWARE WITHOUT INSTALLING IT
+## Using the software without installation
 
 The build process creates shared object files and binary executables in the `lib64` and `bin64` folders of the root project directory.
 
 Add the path of the `lib64` folder to the `LD_LIBRARY_PATH` and the path of the `bin64` folder to the `PATH` environment variables.
 
-## INSTALLING THE CODE
+## Installing the code
 
 > make install
 
@@ -109,7 +109,7 @@ The package installs:
    3. a Python script which is intended to be used as the main interface of the method,
    4. the model descriptor files trained on the STARE and DRIVE databases.
 
-## CHECKING THAT THE ENVIRONMENT WORKS
+## Checking that the environment works
 
 If everything is installed and the PATH variables are set properly, opening a command line
 the command
@@ -133,7 +133,7 @@ vessel.py stare-ca <input> <scale> <output>
 vessel.py help
 ```
 
-## USE CASES
+## Use cases
 
 Generally, the algorithm writes temporary files to the directory in which it is
 executed. It is highly recommended to create an empty directory and call the vessel.py
