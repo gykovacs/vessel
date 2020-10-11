@@ -132,10 +132,19 @@ namespace openip
 
         png_read_info(png_ptr, info_ptr);
 
+        png_uint_32 width, height; 
+        int bit_depth, color_type, interlace_type, compression_type, filter_method;
+
+        png_get_IHDR(png_ptr, info_ptr, &width, &height, &bit_depth, &color_type, &interlace_type, &compression_type, &filter_method);
+
+        /*
         int columns= info_ptr->width;
         int rows= info_ptr->height;
         int color_type= info_ptr->color_type;
-        int bit_depth= info_ptr->bit_depth;
+        int bit_depth= info_ptr->bit_depth;*/
+
+        int columns= width;
+        int rows= height;
 
         //int number_of_passes= png_set_interlace_handling(png_ptr);
         png_read_update_info(png_ptr, info_ptr);
@@ -148,9 +157,11 @@ namespace openip
 
         png_bytep* row_pointers;
 
+        int rowbytes= png_get_rowbytes(png_ptr, info_ptr);
+
         row_pointers= (png_bytep*)std::malloc(sizeof(png_bytep) *rows);
         for ( int y= 0; y <rows; ++y )
-            row_pointers[y]= (png_byte*)std::malloc(info_ptr->rowbytes);
+            row_pointers[y]= (png_byte*)std::malloc(rowbytes);
 
         png_read_image(png_ptr, row_pointers);
 
@@ -169,7 +180,7 @@ namespace openip
         {
             for ( int i= 0; i < rows; ++i )
             {
-                for ( unsigned int j= 0; j < info_ptr->rowbytes; j+= 3 )
+                for ( int j= 0; j < rowbytes; j+= 3 )
                 {
                     switch(channel)
                     {
@@ -198,7 +209,7 @@ namespace openip
             cout << "read png 16" << endl;
             for ( int i= 0; i < rows; ++i )
             {
-                for ( unsigned int j= 0; j < info_ptr->rowbytes; j+= 6 )
+                for ( int j= 0; j < rowbytes; j+= 6 )
                 {
                     switch(channel)
                     {
@@ -227,7 +238,7 @@ namespace openip
         {
             for ( int i= 0; i < rows; ++i )
             {
-                for ( unsigned int j= 0; j < info_ptr->rowbytes; j+= 4 )
+                for ( int j= 0; j < rowbytes; j+= 4 )
                 {
                     switch(channel)
                     {
@@ -255,7 +266,7 @@ namespace openip
         {
             for ( int i= 0; i < rows; ++i )
             {
-                for ( unsigned int j= 0; j < info_ptr->rowbytes; ++j )
+                for ( int j= 0; j < rowbytes; ++j )
                 {
                     img(rr)= row_pointers[i][j];
                     ++rr;
@@ -269,7 +280,7 @@ namespace openip
             for ( int i= 0; i < rows; ++i )
             {
                 int col= 0;
-                for ( unsigned int j= 0; j < info_ptr->rowbytes; ++j )
+                for ( int j= 0; j < rowbytes; ++j )
                 {
                     char tmp= row_pointers[i][j];
                     img(rr)= (tmp & 128) ? 255 : 0;
@@ -314,7 +325,7 @@ namespace openip
         {
             for ( int i= 0; i < rows; i+= 2 )
             {
-                for ( unsigned int j= 0; j < info_ptr->rowbytes; ++j )
+                for ( int j= 0; j < rowbytes; ++j )
                 {
                     img(rr)= row_pointers[i][j];
                     ++rr;
@@ -373,10 +384,19 @@ namespace openip
 
         png_read_info(png_ptr, info_ptr);
 
+        png_uint_32 width, height; 
+        int bit_depth, color_type, interlace_type, compression_type, filter_method;
+
+        png_get_IHDR(png_ptr, info_ptr, &width, &height, &bit_depth, &color_type, &interlace_type, &compression_type, &filter_method);
+
+        /*
         int columns= info_ptr->width;
         int rows= info_ptr->height;
         int color_type= info_ptr->color_type;
-        int bit_depth= info_ptr->bit_depth;
+        int bit_depth= info_ptr->bit_depth;*/
+
+        int columns= width;
+        int rows= height;
 
         //int number_of_passes= png_set_interlace_handling(png_ptr);
         png_read_update_info(png_ptr, info_ptr);
@@ -389,9 +409,11 @@ namespace openip
 
         png_bytep* row_pointers;
 
+        int rowbytes= png_get_rowbytes(png_ptr, info_ptr);
+
         row_pointers= (png_bytep*)std::malloc(sizeof(png_bytep) *rows);
         for ( int y= 0; y <rows; ++y )
-            row_pointers[y]= (png_byte*)std::malloc(info_ptr->rowbytes);
+            row_pointers[y]= (png_byte*)std::malloc(rowbytes);
 
         png_read_image(png_ptr, row_pointers);
 
@@ -407,7 +429,7 @@ namespace openip
         {
             for ( int i= 0; i < rows; ++i )
             {
-                for ( unsigned int j= 0; j < info_ptr->rowbytes; j+= 3 )
+                for ( int j= 0; j < rowbytes; j+= 3 )
                 {
                     r(rr)= row_pointers[i][j];
                     g(rr)= row_pointers[i][j+1];
@@ -422,7 +444,7 @@ namespace openip
         {
             for ( int i= 0; i < rows; ++i )
             {
-                for ( unsigned int j= 0; j < info_ptr->rowbytes; j+= 6 )
+                for ( int j= 0; j < rowbytes; j+= 6 )
                 {
                     r(rr)= (short)*(&(row_pointers[i][j]));
                     g(rr)= (short)*(&(row_pointers[i][j+2]));
@@ -438,7 +460,7 @@ namespace openip
         {
             for ( int i= 0; i < rows; ++i )
             {
-                for ( unsigned int j= 0; j < info_ptr->rowbytes; j+= 4 )
+                for ( int j= 0; j < rowbytes; j+= 4 )
                 {
                     r(rr)= row_pointers[i][j];
                     g(rr)= row_pointers[i][j+1];
@@ -453,7 +475,7 @@ namespace openip
         {
             for ( int i= 0; i < rows; ++i )
             {
-                for ( unsigned int j= 0; j < info_ptr->rowbytes; ++j )
+                for ( int j= 0; j < rowbytes; ++j )
                 {
                     r(rr)= g(rr)= b(rr)= row_pointers[i][j];
                     ++rr;
@@ -466,7 +488,7 @@ namespace openip
         {
             for ( int i= 0; i < rows; i+= 2 )
             {
-                for ( unsigned int j= 0; j < info_ptr->rowbytes; ++j )
+                for ( int j= 0; j < rowbytes; ++j )
                 {
                     r(rr)= g(rr)= b(rr)= row_pointers[i][j];
                     ++rr;

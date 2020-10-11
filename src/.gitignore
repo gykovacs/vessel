@@ -1,0 +1,10 @@
+*.o
+*.so
+*.cmake
+*.txt
+Makefile
+vessel
+*.dir
+*.json
+*CMakeFiles
+lib64/*

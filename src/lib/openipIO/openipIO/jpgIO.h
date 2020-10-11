@@ -316,8 +316,8 @@ namespace openip
         cinfo.in_color_space= JCS_GRAYSCALE;
 
         jpeg_set_defaults(&cinfo);
-        jpeg_set_quality(&cinfo, 100, true);
-        jpeg_start_compress(&cinfo, true);
+        jpeg_set_quality(&cinfo, 100, TRUE);
+        jpeg_start_compress(&cinfo, TRUE);
 
         JSAMPROW row_pointer;
 
@@ -371,8 +371,8 @@ namespace openip
         cinfo.in_color_space= JCS_RGB;
 
         jpeg_set_defaults(&cinfo);
-        jpeg_set_quality(&cinfo, 100, true);
-        jpeg_start_compress(&cinfo, true);
+        jpeg_set_quality(&cinfo, 100, TRUE);
+        jpeg_start_compress(&cinfo, TRUE);
 
         JSAMPROW row_pointer;
 

@@ -122,7 +122,7 @@ void openip::BinaryMaskSystem2::generateLookUpTable()
         inFile.read((char*)&(lookUpTable[0]), lutSize);
     else
     {
-        BinaryMaskSystem2::iterator bit= this->begin();
+        //BinaryMaskSystem2::iterator bit= this->begin();
 
         for ( unsigned int i= 0; i < lutSize; ++i )
             lookUpTable[i]= this->match(i);
