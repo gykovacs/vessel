@@ -8,6 +8,8 @@ Gy. Kovacs and A. Hajdu. "A Self-Calibrating Approach for the Segmentation of Re
 by Template Matching and Contour Reconstruction". In: Medical Image Analysis 29(4) (2016).
 pp. 24-46. DOI: 10.1016/j.media.2015.12.003
 
+For the preprint, check https://www.researchgate.net/publication/334732374_An_empirical_comparison_and_evaluation_of_minority_oversampling_techniques_on_a_large_number_of_imbalanced_datasets
+
 If you use the method, please consider citing the paper:
 
 ```bibtex
